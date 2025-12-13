@@ -35,8 +35,7 @@ Proyek ini memenuhi seluruh kriteria wajib dan opsional (Bintang 5) dari submiss
 1. **Clone Repository**
    ```bash
    git clone [https://github.com/username-kamu/bookshelf-api.git](https://github.com/Rizal-Saidul/bookshelf-api.git)
-   cd bookshelf-api
-````
+   cd bookshelf-api```
 
 2.  **Install Dependencies**
     Pastikan kamu sudah menginstall Node.js. Lalu jalankan:
