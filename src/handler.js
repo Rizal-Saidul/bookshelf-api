@@ -1,16 +1,10 @@
 const { nanoid } = require("nanoid");
 const books = require("./books");
 
+// Add Book hanlder
 const addBook = (req, res) => {
-  const {
-    name,
-    year,
-    author,
-    summary,
-    publisher,
-    pageCount,
-    readPage,
-  } = req.body;
+  const { name, year, author, summary, publisher, pageCount, readPage, reading } =
+    req.body;
 
   if (!name) {
     return res.status(400).json({
@@ -30,7 +24,7 @@ const addBook = (req, res) => {
   const id = nanoid(12);
   const insertedAt = new Date().toISOString();
   const updatedAt = insertedAt;
-  const finished = (readPage == pageCount)
+  const finished = readPage == pageCount;
 
   let newBooks = {
     id: id,
@@ -41,24 +35,61 @@ const addBook = (req, res) => {
     publisher,
     pageCount,
     readPage,
+    reading,
     finished,
     insertedAt,
     updatedAt,
   };
 
+  books.push(newBooks);
 
-  books.push(newBooks)
-
-  res.status(200).json({
-    status: 'success',
-    message: 'Buku berhasil ditambahkan',
+  res.status(201).json({
+    status: "success",
+    message: "Buku berhasil ditambahkan",
     data: {
-        bookId: id
-    }
-  })
+      bookId: id,
+    },
+  });
 };
 
-module.exports = { addBook }
+// get All Books
+const getBookhandler = (req, res) => {
+  const responseBooks = books.map((book) => ({
+    id: book.id,
+    name: book.name,
+    publisher: book.publisher,
+  }));
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      books: responseBooks,
+    },
+  });
+};
+
+// get  Books By Id
+const getBooksById = (req, res) => {
+    const { id } = req.params;
+
+    const book = books.find((b) => b.id === id);
+
+    if (!book) {
+        return res.status(404).json({
+            status: 'fail',
+            message: 'Buku tidak ditemukan'
+        });
+    }
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            book: book
+        }
+    });
+}
+
+module.exports = { addBook, getBookhandler, getBooksById };
 // {
 //     "name": string,
 //     "year": number,
