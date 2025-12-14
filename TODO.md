@@ -3,34 +3,34 @@
 ## 1. Persiapan Project (Setup)
 - [x] Initialize Project (`npm init -y`)
 - [x] Install Framework (`npm install @hapi/hapi` atau `express`)
-- [ ] Install Nanoid versi 3 (`npm install nanoid@3`)
-- [ ] Install Nodemon untuk development (`npm install --save-dev nodemon`)
-- [ ] Install ESLint (Opsional, untuk nilai maksimal/bintang 5)
-- [ ] Buat struktur folder (`src/server.js`, `src/routes.js`, `src/handler.js`, `src/books.js`)
+- [x] Install Nanoid versi 3 (`npm install nanoid@3`)
+- [x] Install Nodemon untuk development (`npm install --save-dev nodemon`)
+- [x] Install ESLint (Opsional, untuk nilai maksimal/bintang 5)
+- [x] Buat struktur folder (`src/server.js`, `src/routes.js`, `src/handler.js`, `src/books.js`)
 
 ## 2. Konfigurasi Server & Scripts
-- [ ] **Kriteria 2:** Tambahkan script di `package.json`:
-    - [ ] `"start": "node src/server.js"` (Wajib, jangan pakai nodemon disini)
-    - [ ] `"start-dev": "nodemon src/server.js"` (Opsional, untuk development)
-- [ ] **Kriteria 1:** Set Port server ke **9000**
-- [ ] Setup CORS (Agar lolos test Postman)
-- [ ] Siapkan array untuk menyimpan data buku (in-memory)
+- [x] **Kriteria 2:** Tambahkan script di `package.json`:
+    - [x] `"start": "node src/server.js"` (Wajib, jangan pakai nodemon disini)
+    - [x] `"start-dev": "nodemon src/server.js"` (Opsional, untuk development)
+- [x] **Kriteria 1:** Set Port server ke **9000**
+- [x] Setup CORS (Agar lolos test Postman)
+- [x] Siapkan array untuk menyimpan data buku (in-memory)
 
 ## 3. Implementasi API (Kriteria Wajib)
 
 ### A. Route: POST /books (Menyimpan Buku)
-- [ ] **Kriteria 3:** Implementasi logika `POST`.
-- [ ] Validasi Input:
-    - [ ] Cek properti `name`. Jika kosong -> Return 400 (`Gagal menambahkan buku. Mohon isi nama buku`).
-    - [ ] Cek `readPage` > `pageCount`. Jika ya -> Return 400 (`Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount`).
-- [ ] Data Processing:
-    - [ ] Generate `id` (unik, gunakan nanoid).
-    - [ ] Generate `insertedAt` & `updatedAt` (`new Date().toISOString()`).
-    - [ ] Set `finished` (true jika `pageCount === readPage`, else false).
+- [x] **Kriteria 3:** Implementasi logika `POST`.
+- [x] Validasi Input:
+    - [x] Cek properti `name`. Jika kosong -> Return 400 (`Gagal menambahkan buku. Mohon isi nama buku`).
+    - [x] Cek `readPage` > `pageCount`. Jika ya -> Return 400 (`Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount`).
+- [x] Data Processing:
+    - [x] Generate `id` (unik, gunakan nanoid).
+    - [x] Generate `insertedAt` & `updatedAt` (`new Date().toISOString()`).
+    - [x] Set `finished` (true jika `pageCount === readPage`, else false).
     - [ ] Set `reading` (default false jika tidak dikirim, atau ambil dari request).
-- [ ] Response Sukses:
-    - [ ] Return 201.
-    - [ ] Body: `{ status: "success", message: "...", data: { bookId: "..." } }`.
+- [x] Response Sukses:
+    - [x] Return 201.
+    - [x] Body: `{ status: "success", message: "...", data: { bookId: "..." } }`.
 
 ### B. Route: GET /books (Menampilkan Seluruh Buku)
 - [ ] **Kriteria 4:** Implementasi logika `GET` all.
