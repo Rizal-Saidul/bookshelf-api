@@ -92,4 +92,8 @@ Proyek ini telah diuji menggunakan **Postman Collection** yang disediakan oleh D
 
 **Disclaimer:** Proyek ini dibuat untuk tujuan belajar dan pemenuhan tugas submission Dicoding.
 
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> dbcf543d66fbc5385cd79dd3e5894f61b4ab20a2
