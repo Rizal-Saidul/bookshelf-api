@@ -1,22 +1,18 @@
 const { Router } = require("express");
 const {
-  addBook,
-  getBookhandler,
-  getBooksById,
-  editBooksBYId,
-  deleteBookBYIdHandler,
+    addBookHandler,
+    getBookHandler,
+    getBookBYIdHandler,
+    editBookBYIdHandler,
+    deleteBookBYIdHandler,
 } = require("./handler");
-
-// import all controllers
-// import SessionController from './app/controllers/SessionController';
 
 const router = new Router();
 
-// Add routes
-router.post("/books", addBook);
-router.get("/books", getBookhandler);
-router.get("/books/:id", getBooksById);
-router.put("/books/:id", editBooksBYId);
+router.post("/books", addBookHandler);
+router.get("/books", getBookHandler);
+router.get("/books/:id", getBookBYIdHandler);
+router.put("/books/:id", editBookBYIdHandler);
 router.delete("/books/:id", deleteBookBYIdHandler);
 
 module.exports = router;

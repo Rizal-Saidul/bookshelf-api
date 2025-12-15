@@ -1,8 +1,8 @@
 const { nanoid } = require("nanoid");
 const books = require("./books");
 
-// Add Book hanlder
-const addBook = (req, res) => {
+// Add Book
+const addBookHandler = (req, res) => {
   const {
     name,
     year,
@@ -62,7 +62,7 @@ const addBook = (req, res) => {
 };
 
 // get All Books
-const getBookhandler = (req, res) => {
+const getBookHandler = (req, res) => {
   const responseBooks = books.map((book) => ({
     id: book.id,
     name: book.name,
@@ -78,12 +78,12 @@ const getBookhandler = (req, res) => {
 };
 
 // get  Books By Id
-const getBooksById = (req, res) => {
+const getBookBYIdHandler = (req, res) => {
   const { id } = req.params;
 
-  const book = books.find((b) => b.id === id);
+  const bookIndex = books.find((b) => b.id === id);
 
-  if (!book) {
+  if (!bookIndex) {
     return res.status(404).json({
       status: "fail",
       message: "Buku tidak ditemukan",
@@ -93,14 +93,13 @@ const getBooksById = (req, res) => {
   res.status(200).json({
     status: "success",
     data: {
-      book: book,
+      book: bookIndex,
     },
   });
 };
 
 // edit Book By Id
-
-const editBooksBYId = (req, res) => {
+const editBookBYIdHandler = (req, res) => {
   const { id } = req.params;
 
   const bookIndex = books.findIndex((b) => b.id === id);
@@ -108,7 +107,7 @@ const editBooksBYId = (req, res) => {
   if (bookIndex === -1) {
     return res.status(404).json({
       status: "fail",
-      message: "Buku tidak ditemukan",
+      message: "Gagal memperbarui buku. Id tidak ditemukan",
     });
   }
 
@@ -161,19 +160,20 @@ const editBooksBYId = (req, res) => {
   });
 };
 
+// Delete Book By Id
 const deleteBookBYIdHandler = (req, res) => {
   const { id } = req.params;
 
-  const index = books.findIndex((b) => b.id === id);
+  const bookIndex = books.findIndex((b) => b.id === id);
 
-  if (index === -1) {
+  if (bookIndex === -1) {
     return res.status(404).json({
       status: "fail",
       message: "Buku gagal dihapus. Id tidak ditemukan",
     });
   }
 
-  books.splice(index, 1);
+  books.splice(bookIndex, 1);
 
   return res.status(200).json({
     status: "success",
@@ -182,19 +182,9 @@ const deleteBookBYIdHandler = (req, res) => {
 };
 
 module.exports = {
-  addBook,
-  getBookhandler,
-  getBooksById,
-  editBooksBYId,
+  addBookHandler,
+  getBookHandler,
+  getBookBYIdHandler,
+  editBookBYIdHandler,
   deleteBookBYIdHandler,
 };
-// {
-//     "name": string,
-//     "year": number,
-//     "author": string,
-//     "summary": string,
-//     "publisher": string,
-//     "pageCount": number,
-//     "readPage": number,
-//     "reading": boolean
-// }
