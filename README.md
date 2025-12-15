@@ -16,19 +16,19 @@ Aplikasi ini merupakan **RESTful API** sederhana untuk mengelola data buku (Book
 Proyek ini memenuhi seluruh kriteria wajib dan opsional (Bintang 5) dari submission:
 
 ### Kriteria Wajib (Mandatory)
-- [ ] Server berjalan pada **Port 9000**.
-- [ ] Aplikasi dijalankan dengan `npm run start`.
-- [ ] **POST /books**: Dapat menyimpan buku dengan validasi input.
-- [ ] **GET /books**: Dapat menampilkan seluruh buku (id, nama, publisher).
-- [ ] **GET /books/{bookId}**: Dapat menampilkan detail buku berdasarkan ID.
-- [ ] **PUT /books/{bookId}**: Dapat mengubah data buku berdasarkan ID.
-- [ ] **DELETE /books/{bookId}**: Dapat menghapus data buku berdasarkan ID.
+- [x] Server berjalan pada **Port 9000**.
+- [x] Aplikasi dijalankan dengan `npm run start`.
+- [x] **POST /books**: Dapat menyimpan buku dengan validasi input.
+- [x] **GET /books**: Dapat menampilkan seluruh buku (id, nama, publisher).
+- [x] **GET /books/{bookId}**: Dapat menampilkan detail buku berdasarkan ID.
+- [x] **PUT /books/{bookId}**: Dapat mengubah data buku berdasarkan ID.
+- [x] **DELETE /books/{bookId}**: Dapat menghapus data buku berdasarkan ID.
 
 ### Kriteria Opsional (Optional)
-- [ ] **Pencarian Nama**: Fitur query parameter `?name=` (case insensitive).
-- [ ] **Filter Reading**: Fitur query parameter `?reading=` (0 atau 1).
-- [ ] **Filter Finished**: Fitur query parameter `?finished=` (0 atau 1).
-- [ ] **Code Quality**: Menggunakan ESLint tanpa error.
+- [x] **Pencarian Nama**: Fitur query parameter `?name=` (case insensitive).
+- [x] **Filter Reading**: Fitur query parameter `?reading=` (0 atau 1).
+- [x] **Filter Finished**: Fitur query parameter `?finished=` (0 atau 1).
+- [x] **Code Quality**: Menggunakan ESLint tanpa error.
 
 ## 🚀 Cara Menjalankan Project
 
