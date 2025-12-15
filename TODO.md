@@ -72,19 +72,19 @@
 
 ## 4. Fitur Opsional (Nilai Bintang 5)
 
-- [ ] **Query Parameter:** Implementasi filter pada route `GET /books`:
-  - [ ] `?name`: Cari buku berdasarkan nama (case insensitive/non-exact).
-  - [ ] `?reading`: Filter `0` (false) atau `1` (true).
-  - [ ] `?finished`: Filter `0` (false) atau `1` (true).
-- [ ] **Code Quality:** Jalankan ESLint dan pastikan tidak ada error.
+- [x] **Query Parameter:** Implementasi filter pada route `GET /books`:
+  - [x] `?name`: Cari buku berdasarkan nama (case insensitive/non-exact).
+  - [x] `?reading`: Filter `0` (false) atau `1` (true).
+  - [x] `?finished`: Filter `0` (false) atau `1` (true).
+- [x] **Code Quality:** Jalankan ESLint dan pastikan tidak ada error.
 
 ## 5. Pengujian & Finalisasi
 
-- [ ] Download Postman Collection & Environment.
-- [ ] Import ke aplikasi Postman.
-- [ ] Jalankan Collection Runner.
-  - [ ] Pastikan semua test "Mandatory" PASS.
-  - [ ] (Opsional) Pastikan test "Optional" PASS.
-- [ ] Hapus folder `node_modules`.
-- [ ] Zip folder project.
-- [ ] Submit!
+- [x] Download Postman Collection & Environment.
+- [x] Import ke aplikasi Postman.
+- [x] Jalankan Collection Runner.
+  - [x] Pastikan semua test "Mandatory" PASS.
+  - [x] (Opsional) Pastikan test "Optional" PASS.
+- [x] Hapus folder `node_modules`.
+- [x] Zip folder project.
+- [x] Submit!
