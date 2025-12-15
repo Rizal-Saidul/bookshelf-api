@@ -35,7 +35,7 @@ const addBookHandler = (req, res) => {
   const insertedAt = new Date().toISOString();
   const updatedAt = insertedAt;
 
-  let newBooks = {
+  const newBooks = {
     id: id,
     name,
     year,
@@ -62,8 +62,30 @@ const addBookHandler = (req, res) => {
 };
 
 // get All Books
-const getBookHandler = (req, res) => {
-  const responseBooks = books.map((book) => ({
+const getAllBooksHandler = (req, res) => {
+  const { name, reading, finished } = req.query;
+
+  let filteredBooks = books;
+
+  if (name) {
+    filteredBooks = filteredBooks.filter((book) =>
+      book.name.toLowerCase().includes(name.toLowerCase()),
+    );
+  }
+
+  if (reading !== undefined) {
+    filteredBooks = filteredBooks.filter(
+      (book) => Number(book.reading) === Number(reading),
+    );
+  }
+
+  if (finished !== undefined) {
+    filteredBooks = filteredBooks.filter(
+      (book) => Number(book.finished) === Number(finished),
+    );
+  }
+
+  const responseBooks = filteredBooks.map((book) => ({
     id: book.id,
     name: book.name,
     publisher: book.publisher,
@@ -78,22 +100,21 @@ const getBookHandler = (req, res) => {
 };
 
 // get  Books By Id
-const getBookBYIdHandler = (req, res) => {
+const getBookByIdHandler = (req, res) => {
   const { id } = req.params;
+  const book = books.find((b) => b.id === id);
 
-  const bookIndex = books.find((b) => b.id === id);
-
-  if (!bookIndex) {
+  if (!book) {
     return res.status(404).json({
       status: "fail",
       message: "Buku tidak ditemukan",
     });
   }
 
-  res.status(200).json({
+  return res.status(200).json({
     status: "success",
     data: {
-      book: bookIndex,
+      book,
     },
   });
 };
@@ -102,9 +123,9 @@ const getBookBYIdHandler = (req, res) => {
 const editBookBYIdHandler = (req, res) => {
   const { id } = req.params;
 
-  const bookIndex = books.findIndex((b) => b.id === id);
+  const index = books.findIndex((b) => b.id === id);
 
-  if (bookIndex === -1) {
+  if (index === -1) {
     return res.status(404).json({
       status: "fail",
       message: "Gagal memperbarui buku. Id tidak ditemukan",
@@ -140,8 +161,8 @@ const editBookBYIdHandler = (req, res) => {
   const finished = readPage === pageCount;
   const updatedAt = new Date().toISOString();
 
-  books[bookIndex] = {
-    ...books[bookIndex],
+  books[index] = {
+    ...books[index],
     name,
     year,
     author,
@@ -164,16 +185,16 @@ const editBookBYIdHandler = (req, res) => {
 const deleteBookBYIdHandler = (req, res) => {
   const { id } = req.params;
 
-  const bookIndex = books.findIndex((b) => b.id === id);
+  const index = books.findIndex((b) => b.id === id);
 
-  if (bookIndex === -1) {
+  if (index === -1) {
     return res.status(404).json({
       status: "fail",
       message: "Buku gagal dihapus. Id tidak ditemukan",
     });
   }
 
-  books.splice(bookIndex, 1);
+  books.splice(index, 1);
 
   return res.status(200).json({
     status: "success",
@@ -183,8 +204,8 @@ const deleteBookBYIdHandler = (req, res) => {
 
 module.exports = {
   addBookHandler,
-  getBookHandler,
-  getBookBYIdHandler,
+  getAllBooksHandler,
+  getBookByIdHandler,
   editBookBYIdHandler,
   deleteBookBYIdHandler,
 };

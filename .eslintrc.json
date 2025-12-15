@@ -1,0 +1,22 @@
+{
+  "env": {
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": "google",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": "off",
+    "object-curly-spacing": ["error", "always"],
+    "eol-last": "off",
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
+    "new-cap": "off",
+    "require-jsdoc": "off",
+    "valid-jsdoc": "off",
+    "max-len": ["error", { "code": 120 }] 
+  }
+}
