@@ -65,10 +65,10 @@
 
 ### E. Route: DELETE /books/{bookId} (Menghapus Buku)
 
-- [ ] **Kriteria 7:** Implementasi logika `DELETE` by ID.
-- [ ] Cek keberadaan ID. Jika tidak ketemu -> Return 404 (`Buku gagal dihapus. Id tidak ditemukan`).
-- [ ] Hapus data dari array.
-- [ ] Response Sukses: Return 200 (`Buku berhasil dihapus`).
+- [x] **Kriteria 7:** Implementasi logika `DELETE` by ID.
+- [x] Cek keberadaan ID. Jika tidak ketemu -> Return 404 (`Buku gagal dihapus. Id tidak ditemukan`).
+- [x] Hapus data dari array.
+- [x] Response Sukses: Return 200 (`Buku berhasil dihapus`).
 
 ## 4. Fitur Opsional (Nilai Bintang 5)
 

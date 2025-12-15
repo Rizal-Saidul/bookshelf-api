@@ -29,7 +29,7 @@ const addBook = (req, res) => {
     });
   }
 
-  const finished = (readPage == pageCount);
+  const finished = readPage == pageCount;
 
   const id = nanoid(12);
   const insertedAt = new Date().toISOString();
@@ -107,8 +107,8 @@ const editBooksBYId = (req, res) => {
 
   if (bookIndex === -1) {
     return res.status(404).json({
-      status: 'fail',
-      message: 'Buku tidak ditemukan'
+      status: "fail",
+      message: "Buku tidak ditemukan",
     });
   }
 
@@ -138,7 +138,7 @@ const editBooksBYId = (req, res) => {
     });
   }
 
-  const finished = (readPage === pageCount);
+  const finished = readPage === pageCount;
   const updatedAt = new Date().toISOString();
 
   books[bookIndex] = {
@@ -156,12 +156,38 @@ const editBooksBYId = (req, res) => {
   };
 
   res.status(200).json({
-    status: 'success',
-    message: 'Buku berhasil diperbarui'
+    status: "success",
+    message: "Buku berhasil diperbarui",
   });
 };
 
-module.exports = { addBook, getBookhandler, getBooksById, editBooksBYId };
+const deleteBookBYIdHandler = (req, res) => {
+  const { id } = req.params;
+
+  const index = books.findIndex((b) => b.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Buku gagal dihapus. Id tidak ditemukan",
+    });
+  }
+
+  books.splice(index, 1);
+
+  return res.status(200).json({
+    status: "success",
+    message: "Buku berhasil dihapus",
+  });
+};
+
+module.exports = {
+  addBook,
+  getBookhandler,
+  getBooksById,
+  editBooksBYId,
+  deleteBookBYIdHandler,
+};
 // {
 //     "name": string,
 //     "year": number,
