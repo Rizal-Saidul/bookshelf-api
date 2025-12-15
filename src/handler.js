@@ -3,8 +3,16 @@ const books = require("./books");
 
 // Add Book hanlder
 const addBook = (req, res) => {
-  const { name, year, author, summary, publisher, pageCount, readPage, reading } =
-    req.body;
+  const {
+    name,
+    year,
+    author,
+    summary,
+    publisher,
+    pageCount,
+    readPage,
+    reading,
+  } = req.body;
 
   if (!name) {
     return res.status(400).json({
@@ -21,10 +29,11 @@ const addBook = (req, res) => {
     });
   }
 
+  const finished = (readPage == pageCount);
+
   const id = nanoid(12);
   const insertedAt = new Date().toISOString();
   const updatedAt = insertedAt;
-  const finished = readPage == pageCount;
 
   let newBooks = {
     id: id,
@@ -70,26 +79,89 @@ const getBookhandler = (req, res) => {
 
 // get  Books By Id
 const getBooksById = (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    const book = books.find((b) => b.id === id);
+  const book = books.find((b) => b.id === id);
 
-    if (!book) {
-        return res.status(404).json({
-            status: 'fail',
-            message: 'Buku tidak ditemukan'
-        });
-    }
-
-    res.status(200).json({
-        status: 'success',
-        data: {
-            book: book
-        }
+  if (!book) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Buku tidak ditemukan",
     });
-}
+  }
 
-module.exports = { addBook, getBookhandler, getBooksById };
+  res.status(200).json({
+    status: "success",
+    data: {
+      book: book,
+    },
+  });
+};
+
+// edit Book By Id
+
+const editBooksBYId = (req, res) => {
+  const { id } = req.params;
+
+  const bookIndex = books.findIndex((b) => b.id === id);
+
+  if (bookIndex === -1) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Buku tidak ditemukan'
+    });
+  }
+
+  const {
+    name,
+    year,
+    author,
+    summary,
+    publisher,
+    pageCount,
+    readPage,
+    reading,
+  } = req.body;
+
+  if (!name) {
+    return res.status(400).json({
+      status: "fail",
+      message: "Gagal memperbarui buku. Mohon isi nama buku",
+    });
+  }
+
+  if (readPage > pageCount) {
+    return res.status(400).json({
+      status: "fail",
+      message:
+        "Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount",
+    });
+  }
+
+  const finished = (readPage === pageCount);
+  const updatedAt = new Date().toISOString();
+
+  books[bookIndex] = {
+    ...books[bookIndex],
+    name,
+    year,
+    author,
+    summary,
+    publisher,
+    pageCount,
+    readPage,
+    reading,
+    finished,
+    updatedAt,
+  };
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Buku berhasil diperbarui'
+  });
+};
+
+module.exports = { addBook, getBookhandler, getBooksById, editBooksBYId };
 // {
 //     "name": string,
 //     "year": number,

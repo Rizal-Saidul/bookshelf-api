@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { addBook, getBookhandler, getBooksById } = require("./handler");
+const { addBook, getBookhandler, getBooksById, editBooksBYId } = require("./handler");
 
 
 // import all controllers
@@ -11,6 +11,7 @@ const router = new Router();
 router.post('/books', addBook);
 router.get('/books', getBookhandler);
 router.get('/books/:id', getBooksById);
+router.put('/books/:id', editBooksBYId);
 // routes.put('/', SessionController.store);
 // routes.delete('/', SessionController.store);
 

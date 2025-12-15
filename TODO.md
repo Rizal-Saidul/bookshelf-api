@@ -53,15 +53,15 @@
 
 ### D. Route: PUT /books/{bookId} (Mengubah Data Buku)
 
-- [ ] **Kriteria 6:** Implementasi logika `PUT` by ID.
-- [ ] Cek keberadaan ID. Jika tidak ketemu -> Return 404 (`Gagal memperbarui buku. Id tidak ditemukan`).
-- [ ] Validasi Input (Sama seperti POST):
-  - [ ] Cek `name`. Jika kosong -> Return 400.
-  - [ ] Cek `readPage` > `pageCount`. Jika salah -> Return 400.
-- [ ] Update Data:
-  - [ ] Update field yang dikirim.
-  - [ ] Update `updatedAt` dengan waktu sekarang.
-- [ ] Response Sukses: Return 200 (`Buku berhasil diperbarui`).
+- [x] **Kriteria 6:** Implementasi logika `PUT` by ID.
+- [x] Cek keberadaan ID. Jika tidak ketemu -> Return 404 (`Gagal memperbarui buku. Id tidak ditemukan`).
+- [x] Validasi Input (Sama seperti POST):
+  - [x] Cek `name`. Jika kosong -> Return 400.
+  - [x] Cek `readPage` > `pageCount`. Jika salah -> Return 400.
+- [x] Update Data:
+  - [x] Update field yang dikirim.
+  - [x] Update `updatedAt` dengan waktu sekarang.
+- [x] Response Sukses: Return 200 (`Buku berhasil diperbarui`).
 
 ### E. Route: DELETE /books/{bookId} (Menghapus Buku)
 
